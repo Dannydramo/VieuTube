@@ -1,7 +1,5 @@
 import React, { Fragment } from "react";
-import { FaFreeCodeCamp } from "react-icons/fa";
-import { FaWineBottle } from "react-icons/fa";
-import { MdPeopleAlt } from "react-icons/md";
+
 
 const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
   const contents = [
