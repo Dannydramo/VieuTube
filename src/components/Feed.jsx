@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import Videos from './Videos'
 import { FetchApi } from '../utils/fetchApi'
+import { Oval } from 'react-loader-spinner'
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New')
@@ -26,7 +27,21 @@ const Feed = () => {
         <div className="my-4 font-bold text-2xl">
           {selectedCategory} <span>Videos</span>
         </div>
-        {isLoading && <p>Loading...</p>}
+<div className="absolute top-[50%] right-[50%]">
+{isLoading &&   <Oval
+  height={80}
+  width={80}
+  color="#000"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  ariaLabel='oval-loading'
+  secondaryColor="#000"
+  strokeWidth={2}
+  strokeWidthSecondary={2}
+
+/>}
+</div>
       { !isLoading && <Videos videos={videos} />}
       </div>
     </div>

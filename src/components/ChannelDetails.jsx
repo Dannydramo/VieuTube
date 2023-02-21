@@ -4,16 +4,20 @@ import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { FetchApi } from "../utils/fetchApi";
+import {Oval} from 'react-loader-spinner'
 
 const ChannelDetails = () => {
   const { id } = useParams();
   const [channel, setChannel] = useState();
   const [video, setVideo] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    FetchApi(`channels?part=snippet&id=${id}`).then((data) =>
-      setChannel(data?.items[0]).catch(err => console.log(err.message))
-    );
+    FetchApi(`channels?part=snippet&id=${id}`).then((data) =>{
+      setChannel(data?.items[0])
+      setIsLoading(false)
+    }  
+    ).catch(err => console.log(err.message))
   }, [id]);
 
   useEffect(() => {
@@ -40,6 +44,21 @@ const ChannelDetails = () => {
             </p>
           )}
         </div>
+        <div className="absolute top-[50%] right-[50%]">
+{isLoading &&   <Oval
+  height={80}
+  width={80}
+  color="#000"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  ariaLabel='oval-loading'
+  secondaryColor="#000"
+  strokeWidth={2}
+  strokeWidthSecondary={2}
+
+/>}
+</div>
         <div className="grid_temp">
           {video.map((videos) => (
             <div>
