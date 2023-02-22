@@ -3,35 +3,47 @@ import ReactPlayer from "react-player";
 import { Link, useParams } from "react-router-dom";
 import { FetchApi } from "../utils/fetchApi";
 import Videos from "./Videos";
-import {Oval} from 'react-loader-spinner'
+import { Oval } from "react-loader-spinner";
 const VideoDetails = () => {
   const { id } = useParams();
   const [videos, setVideos] = useState();
   const [fetchVideo, setFetchVideo] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
+  const [errMessage, seterrMessage] = useState("");
 
   useEffect(() => {
-    FetchApi(`videos?part=snippet&id=${id}`).then(data => {
-      setVideos(data?.items[0])
-      setIsLoading(false)
-    }).catch(err => console.log(err.message));
+    FetchApi(`videos?part=snippet&id=${id}`)
+      .then((data) => {
+        setVideos(data?.items[0]);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        seterrMessage(err.message);
+        console.log(err.message);
+        setIsLoading(false);
+      });
 
-    FetchApi(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(data => {
-      setFetchVideo(data?.items)
-      setIsLoading(false)
-    }).catch(err => console.log(err.message));
+    FetchApi(`search?part=snippet&relatedToVideoId=${id}&type=video`)
+      .then((data) => {
+        setFetchVideo(data?.items);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        seterrMessage(err.message);
+        console.log(err.message);
+        setIsLoading(false);
+      });
   }, [id]);
-
-
 
   return (
     <Fragment>
       <div className="container">
-        <div className="md:flex">
-          <div className="w-[90vw] md:w-[100%] lg:w-[50%]">
+        <div className="">
+          <div>
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               controls
+              className="w-[10%]"
             />
             <h1>{videos?.snippet?.title}</h1>
             <Link to={`/channel/${videos?.snippet?.channelId}`}>
@@ -39,23 +51,25 @@ const VideoDetails = () => {
             </Link>
             <p>{videos?.snippet?.description.slice(0, 100)}</p>
           </div>
+          <div>{errMessage}</div>
+            <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
+              {isLoading && (
+                <Oval
+                  height={50}
+                  width={50}
+                  color="#000"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  ariaLabel="oval-loading"
+                  secondaryColor="#000"
+                  strokeWidth={2}
+                  strokeWidthSecondary={2}
+                />
+              )}
+            </div>
           <div className="grid_temp">
-          <div className="absolute top-[50%] right-[50%]">
-{isLoading &&   <Oval
-  height={80}
-  width={80}
-  color="#000"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
-  ariaLabel='oval-loading'
-  secondaryColor="#000"
-  strokeWidth={2}
-  strokeWidthSecondary={2}
-
-/>}
-</div>
-          {!isLoading &&  <Videos videos={fetchVideo} />}
+            {!isLoading && <Videos videos={fetchVideo} />}
           </div>
         </div>
       </div>

@@ -1,29 +1,38 @@
 import React, { useEffect, Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { FaCheck } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { FetchApi } from "../utils/fetchApi";
-import {Oval} from 'react-loader-spinner'
+import { Oval } from "react-loader-spinner";
 
 const ChannelDetails = () => {
   const { id } = useParams();
   const [channel, setChannel] = useState();
   const [video, setVideo] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
+  const [errMessage, seterrMessage] = useState("");
 
   useEffect(() => {
-    FetchApi(`channels?part=snippet&id=${id}`).then((data) =>{
-      setChannel(data?.items[0])
-      setIsLoading(false)
-    }  
-    ).catch(err => console.log(err.message))
+    FetchApi(`channels?part=snippet&id=${id}`)
+      .then((data) => {
+        setChannel(data?.items[0]);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        seterrMessage(err.message);
+        console.log(err.message);
+        setIsLoading(false);
+      });
   }, [id]);
 
   useEffect(() => {
-    FetchApi(`search?channelId=${id}&part=snippet&order=date`).then((data) =>
-      setVideo(data?.items)
-    );
+    FetchApi(`search?channelId=${id}&part=snippet&order=date`)
+      .then((data) => setVideo(data?.items))
+      .catch((err) => {
+        seterrMessage(err.message);
+        console.log(err.message);
+        setIsLoading(false);
+      });
   }, [id]);
 
   return (
@@ -44,21 +53,23 @@ const ChannelDetails = () => {
             </p>
           )}
         </div>
+        <div className="">{errMessage}</div>
         <div className="absolute top-[50%] right-[50%]">
-{isLoading &&   <Oval
-  height={80}
-  width={80}
-  color="#000"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
-  ariaLabel='oval-loading'
-  secondaryColor="#000"
-  strokeWidth={2}
-  strokeWidthSecondary={2}
-
-/>}
-</div>
+          {isLoading && (
+            <Oval
+              height={50}
+              width={50}
+              color="#000"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="oval-loading"
+              secondaryColor="#000"
+              strokeWidth={2}
+              strokeWidthSecondary={2}
+            />
+          )}
+        </div>
         <div className="grid_temp">
           {video.map((videos) => (
             <div>

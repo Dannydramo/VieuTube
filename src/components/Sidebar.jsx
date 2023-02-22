@@ -1,20 +1,19 @@
 import React, { Fragment } from "react";
 
-
 const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
   const contents = [
     { name: "New" },
-    { name: "Music"},
-    { name: "Js Mastery"},
-    { name: "ReactJs"},
-    { name: "NextJs"},
-    { name: "Movies"},
-    { name: "Python"},
-    { name: "Coding"},
+    { name: "Music" },
+    { name: "Js Mastery" },
+    { name: "ReactJs" },
+    { name: "NextJs" },
+    { name: "Movies" },
+    { name: "Python" },
+    { name: "Coding" },
     { name: "React Native" },
-    { name: "Football"},
+    { name: "Football" },
     { name: "Cooking" },
-    { name: "Frontend"},
+    { name: "Frontend" },
   ];
 
   return (
