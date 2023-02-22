@@ -30,7 +30,7 @@ const SearchFeed = () => {
           <div className="my-4 text-2xl">
             Search Result for <span className="font-bold">{searchTerm} </span>
           </div>
-          <div className="">{errMessage}</div>
+          <div className="absolute top-[50%] right-[45%] lg:right-[50%]">{errMessage}</div>
           <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
             {isLoading && (
               <Oval

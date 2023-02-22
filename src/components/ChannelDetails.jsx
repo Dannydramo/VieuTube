@@ -53,7 +53,7 @@ const ChannelDetails = () => {
             </p>
           )}
         </div>
-        <div className="">{errMessage}</div>
+        <div className="absolute top-[50%] right-[45%] lg:right-[50%]">{errMessage}</div>
         <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
           {isLoading && (
             <Oval

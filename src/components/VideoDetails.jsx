@@ -51,7 +51,7 @@ const VideoDetails = () => {
             </Link>
             <p>{videos?.snippet?.description.slice(0, 100)}</p>
           </div>
-          <div>{errMessage}</div>
+          <div className="absolute top-[50%] right-[45%] lg:right-[50%]">{errMessage}</div>
             <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
               {isLoading && (
                 <Oval
