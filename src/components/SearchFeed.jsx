@@ -31,7 +31,7 @@ const SearchFeed = () => {
             Search Result for <span className="font-bold">{searchTerm} </span>
           </div>
           <div className="">{errMessage}</div>
-          <div className="absolute top-[50%] right-[50%]">
+          <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
             {isLoading && (
               <Oval
                 height={50}
