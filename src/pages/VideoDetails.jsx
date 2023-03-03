@@ -39,11 +39,12 @@ const VideoDetails = () => {
     <Fragment>
       <div className="container">
         <div className="">
-          <div className="md:w-full height-full w-[250px]">
+          <div className="height-full md:w-[60%] lg:w-[50%]">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               controls
-              className="w-[10%]"
+              width="100%"
+              
             />
             <h1>{videos?.snippet?.title}</h1>
             <Link to={`/channel/${videos?.snippet?.channelId}`}>
