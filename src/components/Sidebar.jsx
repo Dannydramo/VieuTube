@@ -4,7 +4,7 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
   const contents = [
     { name: "New" },
     { name: "Music" },
-    { name: "Js Mastery" },
+    { name: "JsMastery" },
     { name: "ReactJs" },
     { name: "NextJs" },
     { name: "Movies" },
@@ -14,6 +14,10 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
     { name: "Football" },
     { name: "Cooking" },
     { name: "Frontend" },
+    {name: 'News'},
+    {name: 'Jenifa'},
+    {name: 'Computers'},
+    {name: 'Manchester United F.C.'}
   ];
 
   return (

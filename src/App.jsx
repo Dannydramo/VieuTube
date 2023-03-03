@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ChannelDetails from "./components/ChannelDetails";
-import Feed from "./components/Feed";
+import ChannelDetails from "./pages/ChannelDetails";
+import Feed from "./pages/Feed";
 import Navbar from "./components/Navbar";
-import SearchFeed from "./components/SearchFeed";
-import VideoDetails from "./components/VideoDetails";
+import SearchFeed from "./pages/SearchFeed";
+import VideoDetails from "./pages/VideoDetails";
 
 function App() {
   return (

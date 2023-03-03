@@ -21,7 +21,7 @@ const SearchInput = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            className="bg-transparent w-80 outline-none border-none"
+            className="bg-transparent text-md w-50 md:w-60 lg:w-96 h-[15px] lg:h-[30px] outline-none border-none"
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}

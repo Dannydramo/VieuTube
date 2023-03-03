@@ -2,7 +2,7 @@ import React from "react";
 import { Fragment, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FetchApi } from "../utils/fetchApi";
-import Videos from "./Videos";
+import Videos from "../components/Videos";
 import { Oval } from "react-loader-spinner";
 
 const SearchFeed = () => {
@@ -30,7 +30,9 @@ const SearchFeed = () => {
           <div className="my-4 text-2xl">
             Search Result for <span className="font-bold">{searchTerm} </span>
           </div>
-          <div className="absolute top-[50%] right-[45%] lg:right-[50%]">{errMessage}</div>
+          <div className="absolute top-[50%] w-[50%] text-center right-[25%] ">
+            {errMessage}
+          </div>
           <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
             {isLoading && (
               <Oval

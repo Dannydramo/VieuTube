@@ -53,7 +53,9 @@ const ChannelDetails = () => {
             </p>
           )}
         </div>
-        <div className="absolute top-[50%] right-[45%] lg:right-[50%]">{errMessage}</div>
+        <div className="absolute top-[50%] w-[50%] text-center right-[25%] ">
+          {errMessage}
+        </div>
         <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
           {isLoading && (
             <Oval
@@ -78,7 +80,7 @@ const ChannelDetails = () => {
               >
                 <div className="">
                   <img
-                    src={videos?.snippet?.thumbnails?.high?.url}
+                    src={videos?.snippet?.thumbnails?.high?.url || videos?.snippet?.thumbnails?.default?.url}
                     alt={videos?.snippet?.title}
                     className="h-[300px] w-[100%] sm:w-[320px] rounded"
                   />

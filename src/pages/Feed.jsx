@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Sidebar from "./Sidebar";
-import Videos from "./Videos";
+import Sidebar from "../components/Sidebar";
+import Videos from "../components/Videos";
 import { FetchApi } from "../utils/fetchApi";
 import { Oval } from "react-loader-spinner";
 
@@ -36,7 +36,9 @@ const Feed = () => {
           <div className="my-4 font-bold text-2xl">
             {selectedCategory} <span>Videos</span>
           </div>
-          <div className="absolute top-[50%] right-[45%] lg:right-[50%]">{errMessage}</div>
+          <div className="absolute top-[50%] w-[50%] text-center right-[25%] ">
+            {errMessage}
+          </div>
           <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
             {isLoading && (
               <Oval

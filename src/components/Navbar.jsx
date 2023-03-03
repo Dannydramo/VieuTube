@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <Fragment>
       <div className="container">
-        <div className="flex justify-between sticky w-full md:w-[70%] top-0 h-[10vh] items-center">
+        <div className="flex justify-between sticky w-full top-0 h-[10vh] items-center">
           <Link to="/">
             <div>Logo</div>
           </Link>

@@ -14,7 +14,7 @@ const VideoCard = ({
         <Link to={videoId ? `/video/${videoId}` : ""}>
           <div className="">
             <img
-              src={snippet?.thumbnails?.high?.url}
+              src={snippet?.thumbnails?.high?.url || snippet?.thumbnails?.default?.url}
               alt={snippet?.title}
               className="h-[300px] w-[100%] sm:w-[320px] rounded"
             />
@@ -22,7 +22,7 @@ const VideoCard = ({
         </Link>
         <Link to={videoId ? `/video/${videoId}` : ""}>
           <div className="p-2 w-full">
-            <h1>{snippet?.title.slice(0,50)}</h1>
+            <h1 className="truncate">{snippet?.title}</h1>
           </div>
         </Link>
         <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : ""}>

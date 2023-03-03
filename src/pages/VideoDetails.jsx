@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { Link, useParams } from "react-router-dom";
 import { FetchApi } from "../utils/fetchApi";
-import Videos from "./Videos";
+import Videos from "../components/Videos";
 import { Oval } from "react-loader-spinner";
 const VideoDetails = () => {
   const { id } = useParams();
@@ -39,7 +39,7 @@ const VideoDetails = () => {
     <Fragment>
       <div className="container">
         <div className="">
-          <div>
+          <div className="md:w-full height-full w-[250px]">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               controls
@@ -51,23 +51,25 @@ const VideoDetails = () => {
             </Link>
             <p>{videos?.snippet?.description.slice(0, 100)}</p>
           </div>
-          <div className="absolute top-[50%] right-[45%] lg:right-[50%]">{errMessage}</div>
-            <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
-              {isLoading && (
-                <Oval
-                  height={50}
-                  width={50}
-                  color="#000"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                  ariaLabel="oval-loading"
-                  secondaryColor="#000"
-                  strokeWidth={2}
-                  strokeWidthSecondary={2}
-                />
-              )}
-            </div>
+          <div className="absolute top-[50%] w-[50%] text-center right-[25%] ">
+            {errMessage}
+          </div>
+          <div className="absolute top-[50%] right-[45%] lg:right-[50%]">
+            {isLoading && (
+              <Oval
+                height={50}
+                width={50}
+                color="#000"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="oval-loading"
+                secondaryColor="#000"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+              />
+            )}
+          </div>
           <div className="grid_temp">
             {!isLoading && <Videos videos={fetchVideo} />}
           </div>
